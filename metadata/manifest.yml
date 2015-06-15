@@ -39,23 +39,9 @@ Scaling:
 Endpoints:
   - Private-IP-Name:   HOST
     Private-Port-Name: PORT1
-    Private-Port:      11211
+    Private-Port:      50033
     Public-Port-Name:  PROXY_PORT1
     Mappings:
       - Frontend:     "/port1"
-        Backend:      ""
-  - Private-IP-Name:   HOST
-    Private-Port-Name: PORT2
-    Private-Port:      15212
-    Public-Port-Name:  PROXY_PORT2
-    Mappings:
-      - Frontend:     "/port2"
-        Backend:      ""
-  - Private-IP-Name:   HOST
-    Private-Port-Name: PORT3
-    Private-Port:      15214
-    Public-Port-Name:  PROXY_PORT3
-    Mappings:
-      - Frontend:     "/port3"
         Backend:      ""
 Install-Build-Required: false
