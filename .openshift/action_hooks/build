@@ -8,7 +8,7 @@ set -e
 
 
 exec >> /tmp/tmp.log 2>&1 
-version=${MEMCACHED_TAG:-1.4.15}
+version=${MEMCACHED_TAG:-1.4.24}
 binaries="../../versions/$version/bin"
 
 #pushd tmp
