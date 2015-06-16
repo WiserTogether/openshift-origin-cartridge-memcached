@@ -6,8 +6,8 @@ Display-Name: Memcached Distributed Memory Object Caching System
 Description: "Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering."
 Version: '1.4.15'
 Versions: ['1.4.15']
-Cartridge-Version: 0.2.0
-Cartridge-Vendor: brianredbeard
+Cartridge-Version: 0.1.0
+Cartridge-Vendor: WiserTogether
 License: ASL 2.0
 Vendor: Memcached
 Categories:
@@ -44,4 +44,12 @@ Endpoints:
     Mappings:
       - Frontend:     "/port1"
         Backend:      ""
+  - Private-IP-Name:   HOST
+    Private-Port-Name: PORT2
+    Private-Port:      50034
+    Public-Port-Name:  PROXY_PORT2
+    Mappings:
+      - Frontend:     "/port2"
+        Backend:      ""
+
 Install-Build-Required: false
