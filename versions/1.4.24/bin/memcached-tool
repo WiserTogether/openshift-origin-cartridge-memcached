@@ -52,7 +52,7 @@ if ($addr =~ m:/:) {
     );
 }
 else {
-    $addr .= ':50033' unless $addr =~ /:\d+$/;
+    $addr .= '50033' unless $addr =~ /:\d+$/;
 
     $sock = IO::Socket::INET->new(
         PeerAddr => $addr,
