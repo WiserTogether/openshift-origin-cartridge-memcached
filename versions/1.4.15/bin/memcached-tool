@@ -38,10 +38,10 @@ undef $mode if @ARGV;
 
 die
     "Usage: memcached-tool <host[:port] | /path/to/socket> [mode]\n
-       memcached-tool 10.0.0.5:11211 display    # shows slabs
-       memcached-tool 10.0.0.5:11211            # same.  (default is display)
-       memcached-tool 10.0.0.5:11211 stats      # shows general stats
-       memcached-tool 10.0.0.5:11211 dump       # dumps keys and values
+       memcached-tool 10.0.0.5:50033 display    # shows slabs
+       memcached-tool 10.0.0.5:50033            # same.  (default is display)
+       memcached-tool 10.0.0.5:50033 stats      # shows general stats
+       memcached-tool 10.0.0.5:50033 dump       # dumps keys and values
 " unless $addr && $mode;
 
 
@@ -52,7 +52,7 @@ if ($addr =~ m:/:) {
     );
 }
 else {
-    $addr .= ':11211' unless $addr =~ /:\d+$/;
+    $addr .= ':50033' unless $addr =~ /:\d+$/;
 
     $sock = IO::Socket::INET->new(
         PeerAddr => $addr,

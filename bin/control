@@ -64,27 +64,7 @@ function start() {
 }
 
 function stop() {
-    local pid=`read_pid`
 
-    if [ -n "$pid" ]; then
-        if kill "$pid" 2>/dev/null; then
-            TIMEOUT="$STOPTIMEOUT"
-            while [ $TIMEOUT -gt 0 -a -f "$OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid" ]; do
-                kill -0 "$pid" 2>/dev/null || break
-                sleep 1
-                let TIMEOUT=${TIMEOUT}-1
-            done
-            /bin/rm -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid
-            while [ $TIMEOUT -gt 0 -a -f "$OPENSHIFT_MEMCACHED_DIR/pid/memcached2.pid" ]; do
-                kill -0 "$pid" 2>/dev/null || break
-                sleep 1
-                let TIMEOUT=${TIMEOUT}-1
-            done
-            /bin/rm -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached2.pid
-
-            _log "Memcached stopped"
-        fi
-    else
         killall memcached
         if `pgrep -x memcached >/dev/null 2>&1`
         then
@@ -92,7 +72,9 @@ function stop() {
         else
             client_result "Memcached already stopped"
         fi
-     fi
+        /bin/rm -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached1.pid
+        /bin/rm -f $OPENSHIFT_MEMCACHED_DIR/pid/memcached2.pid
+
 }
 
 case "$1" in
